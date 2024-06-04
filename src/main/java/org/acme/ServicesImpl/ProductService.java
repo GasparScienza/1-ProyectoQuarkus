@@ -1,7 +1,6 @@
 package org.acme.ServicesImpl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.acme.Models.Producto;
 import org.acme.Repositories.ProductRepository;
@@ -16,7 +15,6 @@ public class ProductService implements IProductService{
 	@Inject
 	private ProductRepository productRepository;
 	
-	
 	@Override
 	public void addProduct(Producto producto) {
 		productRepository.persist(producto);
@@ -24,26 +22,22 @@ public class ProductService implements IProductService{
 
 	@Override
 	public List<Producto> getProduct() {
-		// TODO Auto-generated method stub
 		return productRepository.listAll();
 	}
 
 	@Override
 	public void delProduct(Long id) {
-		// TODO Auto-generated method stub
-		
+		productRepository.deleteById(id);
 	}
-
+	
 	@Override
-	public Optional<Producto> findProduct(Long id) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public Producto findProduct(Long id) {
+		return productRepository.findById(id);
 	}
 
 	@Override
 	public void editProduct(Long id, String name) {
-		// TODO Auto-generated method stub
-		
-	}
 
+	}
 }
+
